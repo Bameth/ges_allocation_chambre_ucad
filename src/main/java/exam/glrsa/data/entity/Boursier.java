@@ -10,7 +10,6 @@ public class Boursier extends Etudiant {
         this.typeBourse = typeBourse;
     }
 
-    // Getters and setters
     @Override
     public TypeBourse getTypeBourse() {
         return typeBourse;

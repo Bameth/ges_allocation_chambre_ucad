@@ -2,37 +2,41 @@ package exam.glrsa.services;
 
 import java.util.List;
 
+import exam.glrsa.core.Repository;
 import exam.glrsa.core.Service;
 import exam.glrsa.data.entity.Chambre;
-import exam.glrsa.data.repository.ChambreRepositoryImpl;
+
 
 public class ChambreService implements Service<Chambre> {
-    private ChambreRepositoryImpl chambreRepository = new ChambreRepositoryImpl();
+    private Repository<Chambre> chambreRepositoryImpl;
+    public ChambreService(Repository<Chambre> chambreRepositoryImpl) {
+        this.chambreRepositoryImpl = chambreRepositoryImpl;
+    }
 
     @Override
     public boolean save(Chambre chambre) {
-        return chambreRepository.insert(chambre);
+        return chambreRepositoryImpl.insert(chambre);
     }
 
     @Override
     public List<Chambre> show() {
-        return chambreRepository.selectAll();
+        return chambreRepositoryImpl.selectAll();
     }
 
     @Override
     public Chambre getBy(String value) {
-        return chambreRepository.selectByNumero(value);
+        return chambreRepositoryImpl.selectByNumero(value);
     }
     public List<Chambre> getbyPavillonChambres(String value) {
-        return chambreRepository.selectBy(value);
+        return chambreRepositoryImpl.selectBy(value);
     }
 
     @Override
     public int count() {
-        return chambreRepository.count();
+        return chambreRepositoryImpl.count();
     }
 
     public boolean update(Chambre chambre) {
-        return chambreRepository.update(chambre);
+        return chambreRepositoryImpl.update(chambre);
     }
 }

@@ -1,12 +1,17 @@
 package exam.glrsa.services; 
 
 import java.util.List;
+
+import exam.glrsa.core.Repository;
 import exam.glrsa.core.Service;
 import exam.glrsa.data.entity.Pavillon;
-import exam.glrsa.data.repository.PavillonRepositoryImpl;
 
 public class PavillonService implements Service<Pavillon> {
-    private PavillonRepositoryImpl pavEtudiantRepositoryImpl = new PavillonRepositoryImpl();
+    private Repository<Pavillon> pavEtudiantRepositoryImpl;
+    public PavillonService(Repository<Pavillon> pavEtudiantRepositoryImpl) {
+        this.pavEtudiantRepositoryImpl = pavEtudiantRepositoryImpl;
+    }
+
 
     @Override
     public boolean save(Pavillon objet) {

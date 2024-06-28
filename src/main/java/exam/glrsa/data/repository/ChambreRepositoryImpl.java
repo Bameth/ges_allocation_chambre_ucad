@@ -5,7 +5,6 @@ import java.util.List;
 
 import exam.glrsa.core.Repository;
 import exam.glrsa.data.entity.Chambre;
-import exam.glrsa.data.entity.Etudiant;
 
 public class ChambreRepositoryImpl implements Repository<Chambre> {
     private List<Chambre> chambres = new ArrayList<>();
@@ -13,7 +12,7 @@ public class ChambreRepositoryImpl implements Repository<Chambre> {
     @Override
     public boolean insert(Chambre chambre) {
         if (chambre.getPavillon() == null) {
-            return false; // Éviter l'insertion si le pavillon est nul
+            return false; 
         }
 
         for (Chambre existingChambre : chambres) {
@@ -21,7 +20,7 @@ public class ChambreRepositoryImpl implements Repository<Chambre> {
                     existingChambre.getPavillon().getNumPavillon().equals(chambre.getPavillon().getNumPavillon()) &&
                     existingChambre.getNumeroEtage() == chambre.getNumeroEtage() &&
                     existingChambre.getTypecChambre() == chambre.getTypecChambre()) {
-                return false; // Chambre existe déjà
+                return false; 
             }
         }
 

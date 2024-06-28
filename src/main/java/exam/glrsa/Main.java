@@ -7,8 +7,10 @@ import exam.glrsa.core.Repository;
 import exam.glrsa.data.entity.Chambre;
 import exam.glrsa.data.entity.Etudiant;
 import exam.glrsa.data.entity.Pavillon;
+import exam.glrsa.data.repository.ChambreBdImpl;
+import exam.glrsa.data.repository.ChambreRepositoryImpl;
 import exam.glrsa.data.repository.EtudiantBdImpl;
-import exam.glrsa.data.repository.EtudiantRepositoryBDO;
+import exam.glrsa.data.repository.PavillonBdImpl;
 import exam.glrsa.services.ChambreService;
 import exam.glrsa.services.EtudiantService;
 import exam.glrsa.services.PavillonService;
@@ -23,9 +25,11 @@ public class Main {
         Repository<Etudiant> etudiantRepository=new EtudiantBdImpl();
         EtudiantService etudiantService = new EtudiantService(etudiantRepository);
         EtudiantView etudiantView = new EtudiantView(scanner);
-        PavillonService pavillonService = new PavillonService();
+        Repository<Pavillon> pavillonRepository=new PavillonBdImpl();
+        PavillonService pavillonService = new PavillonService(pavillonRepository);
         PavillonView pavillonView = new PavillonView(scanner, pavillonService);
-        ChambreService chambreService = new ChambreService();
+        Repository<Chambre> chambreRepository=new ChambreBdImpl();
+        ChambreService chambreService = new ChambreService(chambreRepository);
         ChambreView chambreView = new ChambreView(scanner, pavillonService, chambreService, etudiantService);
         int choix;
         do {
@@ -71,7 +75,7 @@ public class Main {
                     String numeroPavillon = scanner.next();
                     List<Chambre> chambreDePavillon = chambreService.getbyPavillonChambres(numeroPavillon);
                     if (chambreDePavillon.isEmpty()) {
-                        System.out.println("Aucun étudiant trouvé dans cette chambre.");
+                        System.out.println("Aucun chambre trouvé dans cette pavillon.");
                     } else {
                         chambreView.affiche(chambreDePavillon);
                     }

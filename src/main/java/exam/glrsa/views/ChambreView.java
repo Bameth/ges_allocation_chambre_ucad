@@ -23,10 +23,9 @@ public class ChambreView extends ViewImpl<Chambre> {
         this.etudiantService = etudiantService;
     }
 
-
     @Override
     public Chambre saisie() {
-        Chambre chambre = new Chambre(); 
+        Chambre chambre = new Chambre();
         System.out.println("Liste des pavillons disponibles :");
         for (Pavillon pavillon : pavillonService.show()) {
             System.out.println(pavillon.getNumPavillon());
@@ -120,6 +119,7 @@ public class ChambreView extends ViewImpl<Chambre> {
         chambre.setEtudiant(etudiant);
         etudiant.setChambre(chambre);
         return chambre;
+
     }
 
     private TypeChambre saisieChambre() {

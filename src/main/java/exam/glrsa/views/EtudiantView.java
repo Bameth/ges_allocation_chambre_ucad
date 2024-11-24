@@ -18,7 +18,7 @@ public class EtudiantView extends ViewImpl<Etudiant> {
     public Etudiant saisie() {
         Etudiant etudiant = new Etudiant();
         System.out.println("Veuillez saisir les informations de l'étudiant :");
-
+        System.out.println("===============================================");
         System.out.print("Nom : ");
         String nom = scanner.next();
         etudiant.setNom(nom);
@@ -33,7 +33,6 @@ public class EtudiantView extends ViewImpl<Etudiant> {
         String dateNaissanceStr = scanner.next();
         LocalDate dateNaissance = LocalDate.parse(dateNaissanceStr);
         etudiant.setDateNaissance(dateNaissance);
-
         System.out.print("Est-ce que l'étudiant est boursier ? (oui/non) : ");
         String choixBoursier = scanner.next();
         scanner.nextLine();

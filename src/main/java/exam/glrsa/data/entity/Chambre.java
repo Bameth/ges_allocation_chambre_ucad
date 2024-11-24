@@ -1,8 +1,8 @@
 package exam.glrsa.data.entity;
 
 import java.util.List;
-
 import exam.glrsa.data.enums.TypeChambre;
+import exam.glrsa.data.enums.TypeEtat;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +14,7 @@ public class Chambre {
     private String numeroChambre;
     private int numeroEtage;
     private TypeChambre typecChambre;
+    private TypeEtat typeEtat;
     private Pavillon pavillon;
     private Etudiant etudiant;
     private List<Loge> loge;
@@ -34,6 +35,7 @@ public class Chambre {
                 ", numeroChambre=" + numeroChambre +
                 ", numeroEtage=" + numeroEtage +
                 ", typecChambre=" + typecChambre +
+                ", typeEtat=" + typeEtat +
                 ", pavillon=" + (pavillon != null ? pavillon.getNumPavillon() : "null") +
                 ", etudiant=" + (etudiant != null ? etudiant.getPrenom() + " " + etudiant.getNom() : "null") +
                 ')';

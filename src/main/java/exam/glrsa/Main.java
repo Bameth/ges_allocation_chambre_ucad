@@ -10,7 +10,9 @@ import exam.glrsa.data.entity.Pavillon;
 import exam.glrsa.data.repository.ChambreBdImpl;
 import exam.glrsa.data.repository.ChambreRepositoryImpl;
 import exam.glrsa.data.repository.EtudiantBdImpl;
+import exam.glrsa.data.repository.EtudiantRepositoryImpl;
 import exam.glrsa.data.repository.PavillonBdImpl;
+import exam.glrsa.data.repository.PavillonRepositoryImpl;
 import exam.glrsa.services.ChambreService;
 import exam.glrsa.services.EtudiantService;
 import exam.glrsa.services.PavillonService;
@@ -25,10 +27,10 @@ public class Main {
         Repository<Etudiant> etudiantRepository=new EtudiantBdImpl();
         EtudiantService etudiantService = new EtudiantService(etudiantRepository);
         EtudiantView etudiantView = new EtudiantView(scanner);
-        Repository<Pavillon> pavillonRepository=new PavillonBdImpl();
+        Repository<Pavillon> pavillonRepository=new PavillonRepositoryImpl();
         PavillonService pavillonService = new PavillonService(pavillonRepository);
         PavillonView pavillonView = new PavillonView(scanner, pavillonService);
-        Repository<Chambre> chambreRepository=new ChambreBdImpl();
+        Repository<Chambre> chambreRepository=new ChambreRepositoryImpl();
         ChambreService chambreService = new ChambreService(chambreRepository);
         ChambreView chambreView = new ChambreView(scanner, pavillonService, chambreService, etudiantService);
         int choix;
@@ -96,8 +98,11 @@ public class Main {
                         etudiantView.affiche(etudiantsDeChambre);
                     }
                     break;
+                    case 12:
+                    chambreService.update(chambreView.archiverChambre());
+                    break;
             }
-        } while (choix != 12);
+        } while (choix != 13);
     }
 
     public static int menu() {
@@ -112,7 +117,8 @@ public class Main {
         System.out.println("9. Ajouter Etudiant");
         System.out.println("10. Lister Etudiants");
         System.out.println("11. Lister les Etudiants d'une Chambre");
-        System.out.println("12. Quitter");
+        System.out.println("12. Archiver Chambre");
+        System.out.println("13. Quitter");
         return scanner.nextInt();
     }
 }

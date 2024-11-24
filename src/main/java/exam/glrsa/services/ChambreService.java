@@ -5,10 +5,11 @@ import java.util.List;
 import exam.glrsa.core.Repository;
 import exam.glrsa.core.Service;
 import exam.glrsa.data.entity.Chambre;
-
+import exam.glrsa.data.enums.TypeEtat;
 
 public class ChambreService implements Service<Chambre> {
     private Repository<Chambre> chambreRepositoryImpl;
+
     public ChambreService(Repository<Chambre> chambreRepositoryImpl) {
         this.chambreRepositoryImpl = chambreRepositoryImpl;
     }
@@ -27,6 +28,7 @@ public class ChambreService implements Service<Chambre> {
     public Chambre getBy(String value) {
         return chambreRepositoryImpl.selectByNumero(value);
     }
+
     public List<Chambre> getbyPavillonChambres(String value) {
         return chambreRepositoryImpl.selectBy(value);
     }
@@ -38,5 +40,11 @@ public class ChambreService implements Service<Chambre> {
 
     public boolean update(Chambre chambre) {
         return chambreRepositoryImpl.update(chambre);
-    }
+    }    
+
+    public boolean archive(Chambre chambre) {
+    chambre.setTypeEtat(TypeEtat.ARCHIVER);
+    return chambreRepositoryImpl.update(chambre);
+}
+
 }

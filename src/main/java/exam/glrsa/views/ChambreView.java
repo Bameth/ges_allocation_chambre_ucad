@@ -6,6 +6,7 @@ import exam.glrsa.data.entity.Chambre;
 import exam.glrsa.data.entity.Etudiant;
 import exam.glrsa.data.entity.Pavillon;
 import exam.glrsa.data.enums.TypeChambre;
+import exam.glrsa.data.enums.TypeEtat;
 import exam.glrsa.services.ChambreService;
 import exam.glrsa.services.EtudiantService;
 import exam.glrsa.services.PavillonService;
@@ -27,9 +28,11 @@ public class ChambreView extends ViewImpl<Chambre> {
     public Chambre saisie() {
         Chambre chambre = new Chambre();
         System.out.println("Liste des pavillons disponibles :");
+        System.out.println("==================================");
         for (Pavillon pavillon : pavillonService.show()) {
             System.out.println(pavillon.getNumPavillon());
         }
+        System.out.println("===================================");
         System.out.println("Veuillez saisir les informations de la chambre :");
         System.out.print("Numero Etage : ");
         int numeroEtage = scanner.nextInt();
@@ -45,7 +48,6 @@ public class ChambreView extends ViewImpl<Chambre> {
             System.out.println("Le numéro d'étage entré ne correspond pas au nombre d'étages du pavillon.");
             return null;
         }
-
         boolean chambreExist = pavillon.getChambres().stream()
                 .anyMatch(c -> c.getNumeroEtage() == numeroEtage && c.getTypecChambre() == typeChambre);
         if (!chambreExist) {
@@ -68,6 +70,7 @@ public class ChambreView extends ViewImpl<Chambre> {
 
     public Chambre modification() {
         System.out.println("Veuillez saisir le numéro de la chambre à modifier : ");
+        System.out.println("======================================================");
         String numeroChambre = scanner.next();
         Chambre chambre = chambreService.getBy(numeroChambre);
 
@@ -99,6 +102,7 @@ public class ChambreView extends ViewImpl<Chambre> {
 
     public Chambre affecterChambre() {
         System.out.println("Veuillez saisir le numéro de la chambre à affecter : ");
+        System.out.println("===================================================");
         String numeroChambre = scanner.next();
         Chambre chambre = chambreService.getBy(numeroChambre);
         if (chambre == null) {
@@ -121,7 +125,26 @@ public class ChambreView extends ViewImpl<Chambre> {
         return chambre;
 
     }
-
+    public Chambre archiverChambre() {
+        System.out.println("Veuillez saisir le numéro de la chambre à archiver : ");
+        String numeroChambre = scanner.next();
+        Chambre chambre = chambreService.getBy(numeroChambre);
+        
+        if (chambre == null) {
+            System.out.println("La chambre avec le numéro spécifié n'existe pas.");
+            return null;
+        }
+        
+        chambre.setTypeEtat(TypeEtat.ARCHIVER);
+        if (chambreService.update(chambre)) {
+            System.out.println("Chambre archivée avec succès !");
+        } else {
+            System.out.println("Erreur lors de l'archivage de la chambre.");
+        }   
+        
+        return chambre;
+    }
+    
     private TypeChambre saisieChambre() {
         int chambreChoice;
         do {
@@ -133,6 +156,18 @@ public class ChambreView extends ViewImpl<Chambre> {
         } while (chambreChoice <= 0 || chambreChoice > TypeChambre.values().length);
 
         return TypeChambre.values()[chambreChoice - 1];
+    }
+    public TypeEtat saisieEtat() {
+        int etatChoice;
+        do {
+            for (TypeEtat etat: TypeEtat.values()) {
+                System.out.println((etat.ordinal() + 1) + "-" + etat.name());
+            }
+            System.out.println("Veuillez sélectionner un Etat : ");
+            etatChoice = scanner.nextInt();
+        } while (etatChoice <= 0 || etatChoice > TypeEtat.values().length);
+
+        return TypeEtat.values()[etatChoice - 1];
     }
 
 }

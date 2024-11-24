@@ -201,7 +201,6 @@ public class EtudiantBdImpl implements Repository<Etudiant> {
                 etudiant.setTelephone(rs.getString("telephone"));
                 etudiant.setDateNaissance(rs.getDate("date_naissance").toLocalDate());
                 etudiant.setTypeBourse(TypeBourse.getValue(rs.getString("type_bourse")));
-                etudiant.setTypeChambre(TypeChambre.getValue(rs.getString("type_chambre")));
                 etudiant.setChambre(new ChambreBdImpl().selectByNumero(rs.getString("chambre_id")));
                 etudiants.add(etudiant);
             }
@@ -319,14 +318,12 @@ public class EtudiantBdImpl implements Repository<Etudiant> {
                 etudiant.setTelephone(rs.getString("telephone"));
                 etudiant.setDateNaissance(rs.getDate("date_naissance").toLocalDate());
                 etudiant.setTypeBourse(TypeBourse.valueOf(rs.getString("type_bourse")));
-                // Populate other fields as needed
             }
 
         } catch (SQLException e) {
             System.out.println("Erreur de Connexion à votre BD");
             e.printStackTrace();
         } finally {
-            // Close resources
             try {
                 if (rs != null)
                     rs.close();

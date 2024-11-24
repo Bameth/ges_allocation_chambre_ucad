@@ -7,5 +7,4 @@ public interface Service<T> {
     List<T> show();
     T getBy(String value);
     int count();
-    
 }

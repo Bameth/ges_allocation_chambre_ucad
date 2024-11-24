@@ -19,7 +19,7 @@ public class PavillonView extends ViewImpl<Pavillon> {
     public Pavillon saisie() {
         Pavillon pavillon = new Pavillon();
         System.out.println("Veuillez saisir les informations du Pavillon :");
-
+        System.out.println("==============================================");
         System.out.print("Quel est le nombre d'étages du pavillon ? : ");
         int nbreEtage = scanner.nextInt();
         pavillon.setNbreEtage(nbreEtage);
@@ -34,7 +34,7 @@ public class PavillonView extends ViewImpl<Pavillon> {
 
     public Pavillon modification() {
         System.out.println("Veuillez saisir les informations de modification du Pavillon :");
-
+        System.out.println("============================================================");
         System.out.print("Numero Pavillon : ");
         String numeroPavillon = scanner.next();
         Pavillon pavillon = pavillonService.selectByNumero(numeroPavillon);

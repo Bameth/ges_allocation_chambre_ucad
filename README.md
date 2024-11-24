@@ -1,175 +1,199 @@
-Projet de Gestion de l'Allocation des Chambres à l'Ucad
+🏨 Projet : Gestion de l'Allocation des Chambres à l'UCAD
 
-Ce projet est une application de gestion des chambres pour l'université UCAD, permettant de gérer les étudiants, pavillons et chambres. Il existe deux versions :
+✍️ Description du Projet
 
-Version utilisant les Listes (étape initiale).
+Ce projet, réalisé en console en ☕ Java, vise à gérer l'allocation des 🛏️ chambres à l'Université Cheikh Anta Diop de Dakar (UCAD). Deux versions du projet ont été développées :
 
-Version basée sur une base de données MySQL (étape avancée).
+📋 Version basée sur les 📜 Listes : Utilise les structures de données de Java pour stocker et manipuler les informations.
 
-Les deux versions illustrent l'application des principes SOLID et utilisent Lombok pour réduire le code boilerplate.
+🗄️ Version avec base de données MySQL : Stocke les informations dans une base de données relationnelle et utilise Lombok 🛠️ pour simplifier la gestion des entités.
 
-Fonctionnalités
+Le projet implémente certains principes de développement SOLID 🎯 afin de garantir un code modulaire, extensible et maintenable.
 
-Gestion des Pavillons :
+🌟 Fonctionnalités Clés
 
-Ajouter, modifier et lister des pavillons.
+🏢 Gestion des Pavillons
 
-Associer des chambres existantes à un pavillon ou créer de nouvelles chambres lors de l'ajout d'un pavillon.
+➕ Ajouter un pavillon.
 
-Gestion des Chambres :
+✏️ Modifier les informations d’un pavillon.
 
-Ajouter, modifier, lister et archiver des chambres.
+📜 Lister tous les pavillons.
 
-Associer une chambre à un pavillon.
+🛠️ Associer des chambres à un pavillon existant lors de sa création.
 
-Gestion des Étudiants :
+🛏️ Gestion des Chambres
 
-Ajouter des étudiants (étudiants boursiers non logés, boursiers logés et non boursiers) via un formulaire unique.
+➕ Ajouter une chambre.
 
-Affecter une chambre à un étudiant boursier logé.
+✏️ Modifier les informations d’une chambre.
 
-Consultations :
+📜 Lister les chambres.
 
-Lister les chambres d’un pavillon.
+🗃️ Archiver une chambre.
 
-Lister les étudiants d'une chambre.
+🏷️ Lister les chambres d’un pavillon donné.
 
-Structure des Données
+🎓 Gestion des Étudiants
 
-Étudiants
+➕ Ajouter un étudiant (à travers un formulaire unique pour tous les types d’étudiants).
 
-Matricule
+🎭 Différencier les types d’étudiants :
 
-Nom
+🏠 Boursiers Logés : Affectation d'une chambre.
 
-Prénom
+🚶‍♂️ Boursiers Non Logés : Pas d’allocation de chambre.
 
-Email
+🏡 Non Boursiers : Ajout d'une adresse.
 
-Téléphone
+📋 Lister les étudiants d’une chambre.
 
-Date de naissance
+🧩 Caractéristiques des Entités
 
-Type :
+🎓 Étudiant
 
-Boursiers
+🆔 Matricule
 
-Demi-bourse : 20 000 FCFA
+✍️ Nom et prénom
 
-Bourse entière : 40 000 FCFA
+📧 Email
 
-Non boursiers
+📞 Téléphone
 
-Adresse
+🎂 Date de naissance
 
-Logés
+🗂️ Types :
 
-Chambre assignée
+🎓 Boursiers : Demi-bourse (20,000 FCFA) ou bourse entière (40,000 FCFA).
 
-Chambres
+🏡 Non Boursiers : Adresse.
 
-Numéro de chambre
+🏠 Logés : Chambre assignée.
 
-Étage
+🛏️ Chambre
 
-Type : individuel ou à deux
+🔢 Numéro de chambre
 
-Pavillons
+🏢 Numéro d’étage
 
-Numéro de pavillon
+🛋️ Type (individuelle ou à deux)
 
-Nombre d’étages
+🏢 Pavillon
 
-Fonctionnalités Techniques
+🔢 Numéro de pavillon
 
-Version avec Listes
+🏗️ Nombre d’étages
 
-Données gérées en mémoire avec des collections Java (é.g., ArrayList).
+👨‍💼 Responsable des Pavillons
 
-Requiert une réinitialisation des données à chaque exécution.
+🔑 Accès à toutes les opérations d'ajout, modification, listage et archivage d’éléments du système.
 
-Structure simple et idéale pour une approche didactique.
+🛠️ Technologies Utilisées
 
-Version avec MySQL
+📋 Version avec Listes
 
-Utilisation d'une base de données relationnelle pour la persistance des données.
+💻 Langage : Java
 
-ORM : JDBC ou Hibernate pour la gestion des entités.
+📚 Bibliothèques : Collections Framework (List, Map, etc.)
 
-Schéma de base de données précis avec des relations entre étudiants, chambres et pavillons.
+📐 Paradigmes : Mise en pratique des principes SOLID pour une meilleure architecture.
 
-Plus robuste et extensible.
+🗄️ Version avec MySQL
 
-Principes SOLID Appliqués
+💻 Langage : Java
 
-Single Responsibility Principle (SRP) :
+🗄️ Base de données : MySQL
 
-Chaque classe a une responsabilité unique, ég.: Etudiant, Chambre, Pavillon, etc.
+⚙️ ORM Simplifié : Lombok pour la génération automatique des getters, setters et constructeurs.
 
-Open/Closed Principle (OCP) :
+🔗 Connexion à la BD : JDBC pour exécuter des opérations CRUD.
 
-Les classes sont ouvertes à l’extension mais fermées à la modification.
+📂 Organisation du Code
 
-Exemple : Ajout de nouveaux types d’étudiants sans modifier la logique existante.
+🏗️ Architecture du Projet
 
-Liskov Substitution Principle (LSP) :
+Le projet est organisé selon une architecture MVC (Modèle-Vue-Contrôleur) :
 
-Les sous-classes (é.g., EtudiantBoursier, EtudiantNonBoursier) peuvent remplacer leur classe mère (Etudiant) sans altérer le comportement du programme.
+📊 Modèle : Classes représentant les entités (Étudiant, Chambre, Pavillon) et accès aux données.
 
-Interface Segregation Principle (ISP) :
+👓 Vue : Interface console permettant à l'utilisateur d'interagir avec le système.
 
-Les interfaces sont divisées en petits groupes fonctionnels (e.g., IPavillonService, IEtudiantService).
+🧠 Contrôleur : Classes gérant la logique métier et orchestrant les interactions entre les modèles et les vues.
 
-Dependency Inversion Principle (DIP) :
+✨ Exemple de Classes
 
-Utilisation de dépendances abstraites (ég., interfaces) au lieu de classes concrètes pour une meilleure flexibilité.
+🎓 Classe Étudiant (Version MySQL avec Lombok)
 
-Lombok
+import lombok.Data;
 
-Utilisation de Lombok pour :
+@Data
+public class Etudiant {
+    private String matricule;
+    private String nom;
+    private String prenom;
+    private String email;
+    private String telephone;
+    private Date dateNaissance;
+    private String type; // Non boursier, Boursier, Logé
+    private String adresse; // Non boursier
+    private Chambre chambre; // Logé
+    private double montantBourse; // Boursier
+}
 
-Réduction du code boilerplate (é.g., getters, setters, toString, equals, hashCode).
+🏢 Classe Pavillon
 
-Annotations : @Data, @Getter, @Setter, @AllArgsConstructor, @NoArgsConstructor.
+import lombok.Data;
 
-Prérequis
+@Data
+public class Pavillon {
+    private int numero;
+    private int nombreEtages;
+    private List<Chambre> chambres;
+}
 
-Java 8+
+⚙️ Instructions d'Installation
 
-MySQL
+📋 Version Listes :
 
-Bibliothèques/Libraries :
+🖥️ Clonez le dépôt.
 
-Lombok
+📂 Ouvrez le projet dans votre IDE Java (Eclipse, IntelliJ IDEA, etc.).
 
-JDBC (pour la version MySQL)
+▶️ Exécutez le fichier Main.java.
 
-Maven ou Gradle pour la gestion des dépendances
+🗄️ Version MySQL :
 
-Installation et Exécution
+🖥️ Assurez-vous que MySQL est installé et configuré.
 
-Version avec Listes
+📥 Importez le fichier schema.sql fourni pour créer la base de données.
 
-Clonez le dépôt.
+⚙️ Configurez les paramètres de connexion à la base de données dans le fichier DatabaseConfig.java.
 
-Compilez et exécutez le fichier principal (Main.java).
+📂 Ouvrez le projet dans votre IDE Java.
 
-Version avec MySQL
+▶️ Exécutez le fichier Main.java.
 
-Configurez la base de données avec le fichier schema.sql.
+🎯 Principes SOLID Appliqués
 
-Mettez à jour les informations de connexion (ég., URL, utilisateur, mot de passe) dans le fichier de configuration.
+🧱 S : Responsabilité unique – Chaque classe a une seule responsabilité claire.
 
-Compilez et exécutez l'application.
+🚪 O : Ouvert/Fermé – Le code est conçu pour être extensible sans modification des classes existantes.
 
-Améliorations Futures
+🔄 L : Substitution de Liskov – Les sous-classes peuvent être utilisées indifféremment de leur classe mère.
 
-Intégration d'une interface graphique (Swing, JavaFX, ou application web avec Spring Boot).
+🧩 I : Ségrégation des interfaces – Les classes implémentent uniquement les interfaces pertinentes.
 
-Ajout de tests unitaires et de validation avec JUnit.
+💉 D : Injection de dépendances – Les dépendances sont passées sous forme de paramètres (dans la version MySQL).
 
-Gestion des erreurs et des exceptions pour une application plus robuste.
+✍️ Auteur
 
-Auteur :
+Projet réalisé dans le cadre de la 2ème année de Licence en Génie Logiciel.
 
-Projet réalisé en 2e année de licence.
+🚀 Améliorations Futures
+
+🎨 Intégration d’une interface utilisateur graphique (JavaFX ou Swing).
+
+🌐 Mise en place d’une API REST pour une version web.
+
+✅ Ajout de tests unitaires et d’intégration pour garantir la qualité du code.
+

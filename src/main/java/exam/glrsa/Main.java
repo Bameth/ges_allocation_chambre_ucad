@@ -24,7 +24,7 @@ public class Main {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Repository<Etudiant> etudiantRepository=new EtudiantBdImpl();
+        Repository<Etudiant> etudiantRepository=new EtudiantRepositoryImpl();
         EtudiantService etudiantService = new EtudiantService(etudiantRepository);
         EtudiantView etudiantView = new EtudiantView(scanner);
         Repository<Pavillon> pavillonRepository=new PavillonRepositoryImpl();

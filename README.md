@@ -112,7 +112,7 @@ Le projet implémente certains principes de développement SOLID 🎯 afin de ga
 
 🏗️ Architecture du Projet
 
-Le projet est organisé selon une architecture MVC (Modèle-Vue-Contrôleur) :
+Le projet est organisé selon une architecture MVC :
 
 📊 Modèle : Classes représentant les entités (Étudiant, Chambre, Pavillon) et accès aux données.
 
@@ -167,7 +167,7 @@ public class Pavillon {
 
 📥 Importez le fichier schema.sql fourni pour créer la base de données.
 
-⚙️ Configurez les paramètres de connexion à la base de données dans le fichier DatabaseConfig.java.
+⚙️ Configurez les paramètres de connexion à la base de données dans chaque fichier RepositoryBd.java.
 
 📂 Ouvrez le projet dans votre IDE Java.
 

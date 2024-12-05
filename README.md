@@ -127,17 +127,29 @@ Le projet est organisé selon une architecture MVC :
 import lombok.Data;
 
 @Data
+
 public class Etudiant {
+
     private String matricule;
+    
     private String nom;
+    
     private String prenom;
+    
     private String email;
+    
     private String telephone;
+    
     private Date dateNaissance;
+    
     private String type; // Non boursier, Boursier, Logé
+    
     private String adresse; // Non boursier
+    
     private Chambre chambre; // Logé
+    
     private double montantBourse; // Boursier
+
 }
 
 🏢 Classe Pavillon
@@ -145,10 +157,15 @@ public class Etudiant {
 import lombok.Data;
 
 @Data
+
 public class Pavillon {
+
     private int numero;
+    
     private int nombreEtages;
+    
     private List<Chambre> chambres;
+
 }
 
 ⚙️ Instructions d'Installation

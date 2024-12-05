@@ -127,7 +127,9 @@ Le projet est organisé selon une architecture MVC :
 import lombok.Data;
 
 @Data
+
 public class Etudiant {
+    
     private String matricule;
     
     private String nom;
